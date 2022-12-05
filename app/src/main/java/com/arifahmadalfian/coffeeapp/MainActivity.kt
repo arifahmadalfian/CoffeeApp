@@ -3,6 +3,7 @@ package com.arifahmadalfian.coffeeapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,6 +24,9 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arifahmadalfian.coffeeapp.model.*
+import com.arifahmadalfian.coffeeapp.presentation.ConverterApp
+import com.arifahmadalfian.coffeeapp.presentation.StatefulConvertInput
+import com.arifahmadalfian.coffeeapp.presentation.TwoWayConverterApp
 import com.arifahmadalfian.coffeeapp.ui.components.*
 import com.arifahmadalfian.coffeeapp.ui.theme.CoffeeAppTheme
 import com.arifahmadalfian.coffeeapp.ui.theme.LightGray
@@ -36,7 +40,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    JetCoffeeApp()
+                    //JetCoffeeApp()
+                    Column {
+                        StatefulConvertInput()
+                        ConverterApp()
+                        TwoWayConverterApp()
+                    }
                 }
             }
         }
