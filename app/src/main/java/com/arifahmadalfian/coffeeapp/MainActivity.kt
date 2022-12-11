@@ -27,6 +27,7 @@ import com.arifahmadalfian.coffeeapp.model.*
 import com.arifahmadalfian.coffeeapp.presentation.ConverterApp
 import com.arifahmadalfian.coffeeapp.presentation.StatefulConvertInput
 import com.arifahmadalfian.coffeeapp.presentation.TwoWayConverterApp
+import com.arifahmadalfian.coffeeapp.presentation.nav_drawer.MyNavDrawerApp
 import com.arifahmadalfian.coffeeapp.ui.components.*
 import com.arifahmadalfian.coffeeapp.ui.theme.CoffeeAppTheme
 import com.arifahmadalfian.coffeeapp.ui.theme.LightGray
@@ -41,11 +42,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     //JetCoffeeApp()
-                    Column {
-                        StatefulConvertInput()
-                        ConverterApp()
-                        TwoWayConverterApp()
-                    }
+//                    Column {
+//                        StatefulConvertInput()
+//                        ConverterApp()
+//                        TwoWayConverterApp()
+//                    }
+                    MyNavDrawerApp(activity = this@MainActivity)
                 }
             }
         }
@@ -162,10 +164,10 @@ fun BottomBar(
 }
 
 
-@Preview(showBackground = true, device = Devices.PIXEL_4)
-@Composable
-fun JetCoffeeAppPreview() {
-    CoffeeAppTheme {
-        JetCoffeeApp()
-    }
-}
+//@Preview(showBackground = true, device = Devices.PIXEL_4)
+//@Composable
+//fun JetCoffeeAppPreview() {
+//    CoffeeAppTheme {
+//        JetCoffeeApp()
+//    }
+//}
