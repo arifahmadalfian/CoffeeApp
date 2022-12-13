@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.TwoWayConverter
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -33,6 +34,7 @@ import com.arifahmadalfian.coffeeapp.ui.components.*
 import com.arifahmadalfian.coffeeapp.ui.theme.CoffeeAppTheme
 import com.arifahmadalfian.coffeeapp.ui.theme.LightGray
 
+@ExperimentalFoundationApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

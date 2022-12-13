@@ -1,6 +1,7 @@
 package com.arifahmadalfian.coffeeapp.presentation.jetheroes
 
 import androidx.compose.animation.*
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,18 +22,24 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.arifahmadalfian.coffeeapp.presentation.jetheroes.HeroesData.heroes
 import com.arifahmadalfian.coffeeapp.ui.theme.CoffeeAppTheme
 import kotlinx.coroutines.launch
 
+@ExperimentalFoundationApi
 @Composable
 fun JetHeroesApp(
     modifier: Modifier = Modifier,
+    viewModel: JetHeroesViewModel = viewModel(factory = ViewModelFactory(HeroRepository()))
 ) {
     Box(modifier = modifier) {
+
+        val groupHeroes by viewModel.groupHeroes.collectAsState()
 
         val scope = rememberCoroutineScope()
         val listState = rememberLazyListState()
@@ -46,13 +53,19 @@ fun JetHeroesApp(
             state = listState,
             contentPadding = PaddingValues(bottom = 80.dp)
         ) {
-            items(heroes, key = { it.id }) { hero ->
-                HeroListItem(
-                    name = hero.name,
-                    photoUrl = hero.photoUrl,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                )
+            groupHeroes.forEach { (initial, heroes) ->
+                stickyHeader {
+                    CharacterHeader(char = initial)
+                }
+
+                items(heroes, key = { it.id }) { hero ->
+                    HeroListItem(
+                        name = hero.name,
+                        photoUrl = hero.photoUrl,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
+                }
             }
         }
 
@@ -124,6 +137,26 @@ fun ScrollToTopButton(
         Icon(
             imageVector = Icons.Filled.KeyboardArrowUp,
             contentDescription = null,
+        )
+    }
+}
+
+@Composable
+fun CharacterHeader(
+    char: Char,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        color = MaterialTheme.colors.primary,
+        modifier = modifier
+    ) {
+        Text(
+            text = char.toString(),
+            color = Color.White,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
     }
 }
