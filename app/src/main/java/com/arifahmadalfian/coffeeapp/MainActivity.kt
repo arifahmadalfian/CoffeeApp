@@ -28,6 +28,7 @@ import com.arifahmadalfian.coffeeapp.model.*
 import com.arifahmadalfian.coffeeapp.presentation.ConverterApp
 import com.arifahmadalfian.coffeeapp.presentation.StatefulConvertInput
 import com.arifahmadalfian.coffeeapp.presentation.TwoWayConverterApp
+import com.arifahmadalfian.coffeeapp.presentation.calculator.CalculatorApp
 import com.arifahmadalfian.coffeeapp.presentation.jetheroes.JetHeroesApp
 import com.arifahmadalfian.coffeeapp.presentation.nav_drawer.MyNavDrawerApp
 import com.arifahmadalfian.coffeeapp.ui.components.*
@@ -51,7 +52,8 @@ class MainActivity : ComponentActivity() {
 //                        TwoWayConverterApp()
 //                    }
 //                    MyNavDrawerApp(activity = this@MainActivity)
-                    JetHeroesApp()
+//                    JetHeroesApp()
+                    CalculatorApp()
                 }
             }
         }
